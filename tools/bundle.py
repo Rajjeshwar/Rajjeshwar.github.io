@@ -8,7 +8,7 @@ page without a local server or to send it to someone.
     python3 tools/bundle.py                 # writes dist/site.html
     python3 tools/bundle.py --embed         # writes dist/embed.html, a fragment without
                                             # <html>/<head>/<body>, for pasting into a host
-                                            # page; the hosted-only extras are left out
+                                            # page
 
 It inlines the stylesheet and flattens the JavaScript modules into one script, in dependency
 order. That flattening is deliberately simple: it relies on every module using one-line
@@ -56,7 +56,7 @@ def flatten(entry):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--embed", action="store_true", help="write a fragment without the document wrapper or hosted-only extras")
+    ap.add_argument("--embed", action="store_true", help="write a fragment without the document wrapper")
     ap.add_argument("-o", "--output", help="output path (default: dist/site.html, or dist/embed.html with --embed)")
     args = ap.parse_args()
 
@@ -64,12 +64,8 @@ def main():
     html = html.replace('<link rel="stylesheet" href="css/styles.css">', "<style>\n" + read("css/styles.css") + "</style>")
     html = re.sub(r'<script src="([^"]+)"></script>', lambda m: "<script>\n" + read(m.group(1)) + "</script>", html)
 
-    def module(m):
-        if args.embed and "data-hosted-only" in m.group(0):
-            return ""
-        return "<script>\n" + flatten(m.group(1)) + "\n</script>"
-
-    html = re.sub(r'<script type="module" src="([^"]+)"[^>]*></script>\n?', module, html)
+    html = re.sub(r'<script type="module" src="([^"]+)"[^>]*></script>\n?',
+                  lambda m: "<script>\n" + flatten(m.group(1)) + "\n</script>", html)
 
     if args.embed:
         html = re.sub(r"<!doctype html>\s*", "", html, flags=re.I)

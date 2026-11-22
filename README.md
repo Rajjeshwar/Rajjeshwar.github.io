@@ -24,14 +24,13 @@ css/styles.css        layout, type, light and dark colours
 js/
   boot.js             runs first, restores a remembered theme or motion choice
   main.js             registers the drawings and wires up the page
-  photo.js            portrait chooser (crop and clean a photo in the browser)
-  photo-download.js   hosted copy only: save the cleaned portrait as a file
   core/
     engine.js         one animation loop; only on-screen canvases are redrawn
     palette.js        colours for the drawings, light and dark
     canvas.js         small canvas helpers
     util.js           maths helpers and a seeded random number generator
   figures/            one file per drawing
+photo.jpg             the portrait shown in the hero
 tools/bundle.py       optional: pack everything into a single HTML file
 ```
 
@@ -43,7 +42,7 @@ Every file in `js/figures/` exports one function. It receives a canvas and retur
 | File | Where it appears | What it shows |
 |---|---|---|
 | `attention.js` | Hero background | A patch grid that lights up where the pointer is |
-| `portrait.js` | Hero | A pixel portrait, or the chosen photo breaking into patches |
+| `portrait.js` | Hero | `photo.jpg` breaking into patches, or a pixel stand-in |
 | `distillation.js` | About | A teacher grid distilling into a smaller student grid |
 | `gp-calibration.js` | Vivid Machines | Gaussian Process calibration with an uncertainty band |
 | `ddim-inversion.js` | CRIM | An image stepped to noise and back, with the error map |
@@ -73,13 +72,10 @@ the light and dark themes.
 
 ## The portrait
 
-The page opens with a pixel stand-in. The camera button on it lets you pick a photo, frame
-it, and save it. The photo is re-encoded in the browser, which drops location data and all
-other metadata, and it is stored on that device only.
-
-To show a real portrait to every visitor, use that chooser, click **Download clean copy**,
-and commit the file as `photo.jpg` next to `index.html`. When that file exists the page
-uses it and hides the chooser.
+The hero shows `photo.jpg`, a 512×512 JPEG next to `index.html`. Until it loads, or if
+it is missing, a pixel stand-in is drawn in its place. Visitors cannot change it; to
+replace it, commit a new `photo.jpg`. Strip location and other metadata from the file
+before committing it, because everything in this repository is public.
 
 ## Behaviour worth knowing
 

@@ -1,5 +1,5 @@
 /*
- * Hero: a patch portrait that distills from fine to coarse and back. With a real photo chosen,
+ * Hero: a patch portrait that distills from fine to coarse and back. Once photo.jpg has loaded,
  * the photo shows and only now and then breaks into patches.
  */
 import { clamp, mix, smooth, hash } from '../core/util.js';
@@ -20,9 +20,8 @@ function samplePortrait(im) {
   } catch (e) { return null; }
 }
 
-// The photo chooser calls these when a portrait is picked or removed.
+// main.js calls this once photo.jpg has loaded.
 export function setPortraitFrom(img) { portrait = samplePortrait(img); }
-export function clearPortrait() { portrait = null; }
 
 export default function patchPortrait(fig) {
   const ctx = fig.ctx, N = 16;

@@ -3,7 +3,7 @@ import { root, $, $$, clamp } from './core/util.js';
 import { isDark, setPalette } from './core/palette.js';
 import { motionOn, setMotion, figs, addFig, paint, kick, hasIO, startEngine } from './core/engine.js';
 import attention from './figures/attention.js';
-import patchPortrait from './figures/portrait.js';
+import patchPortrait, { setPortraitFrom } from './figures/portrait.js';
 import distillation from './figures/distillation.js';
 import gpCalibration from './figures/gp-calibration.js';
 import ddimInversion from './figures/ddim-inversion.js';
@@ -12,7 +12,6 @@ import bottleLine from './figures/bottle-line.js';
 import rnaFolding from './figures/rna.js';
 import nerfRays from './figures/nerf.js';
 import pathTracer from './figures/pathtracer.js';
-import { initPhoto } from './photo.js';
 
 // Each canvas in index.html gets the drawing that belongs to it.
 addFig('fig-attn', attention);
@@ -143,8 +142,15 @@ if (toggle) toggle.addEventListener('click', () => {
   else { root.classList.remove('rv-on'); figs.forEach(paint); }
 });
 
-// Portrait photo chooser.
-initPhoto();
+// Portrait: photo.jpg, next to index.html. Until it loads, or if it is missing, the pixel
+// stand-in stays; once it loads, the drawing breaks the photo into patches now and then.
+{
+  const photo = $('#photo'), tile = $('#me');
+  if (photo && tile) {
+    photo.onload = () => { photo.hidden = false; setPortraitFrom(photo); tile.classList.add('has-photo'); };
+    photo.src = 'photo.jpg';
+  }
+}
 
 // Copy the email address.
 const copy = $('#copy'), email = $('#email');
