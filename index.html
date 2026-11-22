@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" data-hosted="true">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rajjeshwar Ganguly</title>
+<meta name="description" content="Rajjeshwar Ganguly, Senior ML Research Engineer. Computer vision, model compression, distillation and Bayesian calibration.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rajjeshwar Ganguly">
+<meta property="og:description" content="Senior ML Research Engineer. Model compression, generative models, uncertainty quantification and fine-tuning foundation models.">
+<meta name="theme-color" content="#FAFAF8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/boot.js"></script>
+</head>
+<body>
+<header class="top" id="topbar">
+  <div class="wrap top-in">
+    <a class="who" href="#top">Rajjeshwar Ganguly</a>
+    <nav class="top-nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#background">Background</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="i moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.4 9.7A5.7 5.7 0 0 1 6.3 2.6a5.7 5.7 0 1 0 7.1 7.1z"/></svg>
+      <svg class="i sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.7"/><path d="M8 1.5v1.7M8 12.8v1.7M1.5 8h1.7M12.8 8h1.7M3.4 3.4l1.2 1.2M11.4 11.4l1.2 1.2M3.4 12.6l1.2-1.2M11.4 4.6l1.2-1.2"/></svg>
+    </button>
+    <a class="pill solid" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <canvas class="bg" id="fig-attn" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-in">
+      <div class="me-wrap" id="me-wrap">
+        <div class="me" id="me">
+          <img id="photo" alt="Portrait of Rajjeshwar Ganguly" hidden>
+          <canvas id="fig-me" aria-hidden="true"></canvas>
+        </div>
+        <button class="me-edit" id="photo-btn" type="button" aria-label="Choose a portrait photo" title="Choose a portrait photo. It stays on this device."><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h2l1-1.6h5l1 1.6h2v7h-11z"/><circle cx="8" cy="8.8" r="2.1"/></svg></button>
+      </div>
+      <p class="role">Senior ML Research Engineer</p>
+      <h1 id="name">Rajjeshwar Ganguly</h1>
+      <p class="tagline">
+        <span class="sr">I work on model compression, generative models, uncertainty quantification and fine-tuning foundation models.</span>
+        <span aria-hidden="true">I work on
+          <span class="rot" id="rot"><span class="on">model compression.</span><span>generative models.</span><span>uncertainty quantification.</span><span>fine-tuning foundation models.</span></span>
+        </span>
+      </p>
+      <div class="cta">
+        <a class="pill solid" href="#experience">See my work <svg class="i down" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+        <a class="pill" href="https://github.com/Rajjeshwar" target="_blank" rel="noopener">GitHub <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        <a class="pill" href="https://www.linkedin.com/in/rajjeshwar-g-94a2a2147/" target="_blank" rel="noopener">LinkedIn <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <a class="cue" href="#about" aria-label="Scroll to About"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6 8 10.5 12.5 6"/></svg></a>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="rv">
+        <h2>The short version.</h2>
+        <div class="prose">
+          <p>I'm a research engineer working on computer vision and MLOps. At Vivid Machines in Toronto, most of my work is getting large vision models to run well on small hardware. I distill them, calibrate their predictions, and ship them as optimized TensorRT graphs that run on camera.</p>
+          <p>Before that I did my M.Sc. at Mila, Universit&eacute; de Montr&eacute;al, in the program supervised by Prof. Yoshua Bengio, and worked at CRIM on diffusion models for deepfake detection. I have co-authored three peer-reviewed papers on vision transformers and diffusion models.</p>
+          <p>I started out as a software engineer in India, building ML and .NET systems at L&amp;T Infotech and Wipro.</p>
+          <div class="facts">
+            <div><b>2&times;</b><span>faster on camera</span></div>
+            <div><b>30%</b><span>MAPE reduction on low counts</span></div>
+            <div><b>3</b><span>peer-reviewed papers</span></div>
+          </div>
+        </div>
+      </div>
+      <figure class="rv" style="--d:.12s">
+        <div class="well"><div class="stage">
+          <canvas id="fig-distill" role="img" aria-label="Animation: a 14 by 14 grid of teacher patch features on the left and a smaller 7 by 7 student grid on the right. Signals flow from teacher to student, and the student's noisy grid settles into a coarse copy of the teacher's."></canvas>
+        </div></div>
+        <p class="cap">Distillation, drawn live. A ViT-S teacher on the left, and a smaller Efficient-ViT student on the right learning to see the same thing. Teacher counts <b id="f1-ct">7</b>, student counts <b id="f1-cs">7</b>.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Where I've worked.</h2>
+      <div class="arrows">
+        <button class="arrow" id="prev" type="button" aria-label="Previous role"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg></button>
+        <button class="arrow" id="next" type="button" aria-label="Next role"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel rv" id="reel" tabindex="0" role="group" aria-label="Work experience. Scroll sideways or use the arrow keys.">
+    <article class="job">
+      <figure>
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-gp" role="img" aria-label="Animation: a dashed raw model curve, data points arriving one at a time, and a calibrated curve with an uncertainty band that narrows around each new point."></canvas>
+        </div></div>
+        <p class="legend"><span><i class="dash"></i>Raw model</span><span><i></i>Calibrated</span><span><i class="band"></i>Uncertainty</span><span><i class="dot"></i>Historical data</span></p>
+        <figcaption class="cap">A real Gaussian Process, fit in your browser. <b id="f2-n">0</b> of 9 points in, average uncertainty <b id="f2-sd">0.170</b>.</figcaption>
+      </figure>
+      <div class="job-body">
+        <p class="when">May 2024 &ndash; Present<i></i>Toronto, Canada</p>
+        <h3>Senior Machine Learning Research Engineer</h3>
+        <p class="org">Vivid Machines</p>
+        <ul class="tags"><li>PyTorch</li><li>TensorRT</li><li>Spark</li><li>Databricks</li><li>DeepSpeed</li><li>LoRA</li></ul>
+        <ul class="pts">
+          <li>Built a multi-stage distillation pipeline that compresses ViT-S into Efficient-ViT, aligning CLS and register tokens and dense patch features with a Gram loss and log-transformed logit alignment, then refined the production graphs with TensorRT GraphSurgeon and Polygraphy. <strong>5% MAPE reduction overall, 30% on low counts, and a 2&times; speed-up on camera.</strong></li>
+          <li>Designed a Bayesian MAP calibration system that uses Gaussian Processes to correct model predictions from historical data. It runs on Spark over millions of records a day and updates its priors as new data arrives.</li>
+          <li>Ran large-scale self-supervised pretraining of ConvNeXt V2 and MixMIM on HPC clusters with DeepSpeed and BF16 mixed precision, and adapted a DINOv3 ViT-S with LoRA for high-precision apple counting.</li>
+          <li>Led research into prediction consistency across varieties and lighting conditions, improved the SOPs for data collection and field testing on camera hardware, and set up Databricks jobs that send model performance reports to Slack.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <figure>
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-ddim" role="img" aria-label="Animation: a small portrait image is stepped into noise, then stepped back into a reconstruction, and the difference between the two is shown as an error map."></canvas>
+        </div></div>
+        <figcaption class="cap">An image stepped to its latent noise and back. <b id="f3-phase">Input</b>, t = <b id="f3-t">000</b>.</figcaption>
+      </figure>
+      <div class="job-body">
+        <p class="when">May 2023 &ndash; Mar 2024<i></i>Montr&eacute;al, Canada</p>
+        <h3>Computer Vision Research Engineer (Internship)</h3>
+        <p class="org">CRIM, Institut de recherche informatique de Montr&eacute;al</p>
+        <ul class="tags"><li>Diffusion models</li><li>DDIM inversion</li><li>Stable Diffusion</li><li>BLIP</li><li>HPC</li></ul>
+        <ul class="pts">
+          <li>Studied representation learning through diffusion models for deepfake image detection, and set up HPC training and inference pipelines for image classifiers guided by the diffusion latent space.</li>
+          <li>Used stepwise DDIM inversion with pseudo-numerical methods (4th-order Runge&ndash;Kutta plus linear multistep) to recover latent noise vectors and generate reconstructions.</li>
+          <li>Tested how frequency transforms such as DCT and DFT affect reconstruction error, and how useful text guidance is for zero-shot latent inversion, with a Stable Diffusion UNet backbone and BLIP captions.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <figure>
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-ocr" role="img" aria-label="Animation: a scan line moves down a document and the fields it finds appear as a list beside it."></canvas>
+        </div></div>
+        <figcaption class="cap">Documents in, structured fields out.</figcaption>
+      </figure>
+      <div class="job-body">
+        <p class="when">Oct 2021 &ndash; Aug 2022<i></i>Pune, India</p>
+        <h3>Software Engineer (ML, .NET)</h3>
+        <p class="org">Wipro</p>
+        <ul class="tags"><li>RoBERTa</li><li>OCR</li><li>.NET</li></ul>
+        <ul class="pts">
+          <li>Part of a team automating insurance underwriting and speeding up claims processing, using RoBERTa for a prompt-driven chatbot and OCR to extract knowledge from submitted documents.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <figure>
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-line" role="img" aria-label="Animation: bottles move along a line past a camera. Each one is outlined as it passes, and a bottle with a defect is flagged as an anomaly."></canvas>
+        </div></div>
+        <figcaption class="cap">Each bottle is segmented as it crosses the line camera.</figcaption>
+      </figure>
+      <div class="job-body">
+        <p class="when">Jul 2018 &ndash; Apr 2021<i></i>Mumbai, India</p>
+        <h3>Software Engineer (ML, .NET)</h3>
+        <p class="org">Larsen &amp; Toubro Infotech</p>
+        <ul class="tags"><li>Semantic segmentation</li><li>Dice loss</li><li>IoT</li><li>.NET Core</li></ul>
+        <ul class="pts">
+          <li>Trained a semantic segmentation model on line-camera data to detect anomalies in bottles manufactured for pharmaceutical drugs, using Dice loss in place of cross-entropy to improve boundary detection.</li>
+          <li>Contributed to project planning and refactored the codebase behind deployed IoT devices to improve their operational efficiency. Built risk mitigation APIs for data ingestion, device management and alerting.</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true">
+    <button type="button" tabindex="-1" aria-current="true"></button><button type="button" tabindex="-1"></button><button type="button" tabindex="-1"></button><button type="button" tabindex="-1"></button>
+  </div>
+</section>
+
+<section class="sec" id="research">
+  <div class="wrap">
+    <h2 class="rv">What I've published.</h2>
+    <ol class="papers rv" style="--d:.08s">
+      <li class="paper">
+        <div>
+          <h3>RowFormer: Multiple Class-Token-Based Vision Transformer for 2D Context-Aware Attention</h3>
+          <p class="by">M. Dahmane, M. D. Bah, <b>R. Ganguly</b></p>
+          <p class="at">ACIVS 2025<i></i>Lecture Notes in Computer Science, vol. 15656, Springer (2026)</p>
+        </div>
+        <a class="pill" href="https://doi.org/10.1007/978-3-032-07343-3_29" target="_blank" rel="noopener">Read paper <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </li>
+      <li class="paper">
+        <div>
+          <h3>Diffusion Models as a Representation Learner for Deepfake Image Detection</h3>
+          <p class="by"><b>R. Ganguly</b>, M. D. Bah, M. Dahmane</p>
+          <p class="at">ICPR 2024<i></i>Lecture Notes in Computer Science, vol. 15321, Springer (2025)</p>
+        </div>
+        <a class="pill" href="https://doi.org/10.1007/978-3-031-78305-0_15" target="_blank" rel="noopener">Read paper <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </li>
+      <li class="paper">
+        <div>
+          <h3>Diffusion-Inspired Dynamic Models for Enhanced Fake Face Detection</h3>
+          <p class="by">M. Bah, <b>R. Ganguly</b>, M. Dahmane</p>
+          <p class="at">VISAPP 2024<i></i>Proceedings of the 19th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications, vol. 4, pp. 532&ndash;538</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="projects">
+  <div class="wrap">
+    <h2 class="rv">Side projects.</h2>
+    <div class="projects">
+      <article class="project feature rv">
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-pt" role="img" aria-label="Animation: a small Cornell box, with a red wall, a green wall, a matte sphere and a mirror sphere, rendered by a path tracer. It starts grainy and clears as samples accumulate, while a plot beside it shows the noise falling along a one over root n guide line."></canvas>
+        </div></div>
+        <div class="project-body">
+          <p class="when">Physically based rendering<i></i>Fall 2026</p>
+          <h3>A Monte Carlo path tracer in Python</h3>
+          <p>A vectorised path tracer written in NumPy, with drop-in CuPy (CUDA) and MLX (Apple Silicon) backends. It renders global illumination with implicit BRDF-sampled paths and with explicit paths using next-event estimation, plus direct lighting under four sampling strategies, including multiple importance sampling, and ambient occlusion. Integrators, scenes, samplers and denoisers are plug-ins, and a desktop app shows the render converging pass by pass.</p>
+          <p class="cap">The Cornell box shown here is rendered by a real path tracer running in your browser, with next-event estimation. <b id="f6-spp">0</b> samples per pixel so far.</p>
+          <p class="more"><a href="https://github.com/Rajjeshwar/python-pathtracer" target="_blank" rel="noopener">Repository on GitHub</a></p>
+        </div>
+      </article>
+      <article class="project rv">
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-rna" role="img" aria-label="Animation: an RNA sequence along a line. Faint candidate arcs between bases sharpen into two stems of base pairs, while the reactivity bars under paired bases drop."></canvas>
+        </div></div>
+        <div class="project-body">
+          <p class="when">Kaggle, Ribonanza 2023<i></i>Fall 2023</p>
+          <h3>RNA reactivity prediction</h3>
+          <p>Predicted RNA folding structure through surrogate regression of reactivity. Exploratory and topological data analysis and preprocessing, then experiments with dynamic graphs (edge convolutions) and CRNNs on base-pair probabilities.</p>
+          <p class="more"><a href="https://github.com/MinaBeiramy/RNA_Reactivity_Prediction" target="_blank" rel="noopener">Repository on GitHub</a></p>
+        </div>
+      </article>
+      <article class="project rv" style="--d:.1s">
+        <div class="well"><div class="stage wide">
+          <canvas id="fig-nerf" role="img" aria-label="Animation: a camera casts rays into a scene with two objects. Sample points march along each ray, light up inside the objects, and color the matching pixel with the object's class. The camera then moves to a new view."></canvas>
+        </div></div>
+        <div class="project-body">
+          <p class="when">NeRF<i></i>Winter 2023</p>
+          <h3>Geometry-aware 3D semantic segmentation without 3D supervision</h3>
+          <p>Semantic segmentation of a 3D scene without memory-intensive 3D supervision. Neural radiance fields learn the semantic class occupancy of novel views through ray marching. Also explored learning class occupancy from light surface scattering alone.</p>
+          <p class="more"><a href="https://github.com/jadevaibhav/NeRF4Seg" target="_blank" rel="noopener">Repository on GitHub</a></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="background">
+  <div class="wrap">
+    <h2 class="rv">Education and tools.</h2>
+    <div class="cols">
+      <div class="rv">
+        <p class="sub">Education</p>
+        <div class="school">
+          <p class="when">2022 &ndash; 2024</p>
+          <h3>Universit&eacute; de Montr&eacute;al (Mila)</h3>
+          <p>M.Sc. in Computer Science and Machine Learning</p>
+          <p class="note">Program supervised by Prof. Yoshua Bengio. GPA 4.06 / 4.3 (4.0 / 4.0 on the US scale).</p>
+        </div>
+        <div class="school">
+          <p class="when">2014 &ndash; 2018</p>
+          <h3>SRM Institute of Science and Technology</h3>
+          <p>B.Tech. in Computer Science and Engineering</p>
+          <p class="note">First Class.</p>
+        </div>
+        <div class="school">
+          <p class="when">Certificates</p>
+          <h3>DeepLearning.AI</h3>
+          <p class="note"><a href="https://github.com/Rajjeshwar/DeepLearningSpecilization/blob/main/Neural%20Networks%20and%20Deep%20Learning.pdf" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>, <a href="https://github.com/Rajjeshwar/DeepLearningSpecilization/blob/main/Hyperparameter%20Tuning%2C%20Optimization%2C%20Regularization.pdf" target="_blank" rel="noopener">Hyperparameter Tuning, Regularization and Optimization</a>, <a href="https://github.com/Rajjeshwar/DeepLearningSpecilization/blob/main/Structuring%20Machine%20Learning%20Projects.pdf" target="_blank" rel="noopener">Structuring Machine Learning Projects</a>, <a href="https://github.com/Rajjeshwar/DeepLearningSpecilization/blob/main/Convolutional%20Neural%20Networks.pdf" target="_blank" rel="noopener">Convolutional Neural Networks</a>, <a href="https://github.com/Rajjeshwar/DeepLearningSpecilization/blob/main/Sequence%20Models.pdf" target="_blank" rel="noopener">Sequence Models</a>.</p>
+        </div>
+      </div>
+      <div class="rv" style="--d:.1s">
+        <p class="sub">Tools</p>
+        <div class="tg"><h4>Languages</h4><ul class="tags"><li>Python</li><li>C#</li><li>MATLAB</li><li>JavaScript</li></ul></div>
+        <div class="tg"><h4>Machine learning</h4><ul class="tags"><li>PyTorch</li><li>PyTorch Lightning</li><li>TensorFlow-Keras</li><li>SLURM</li></ul></div>
+        <div class="tg"><h4>Deployment and scale</h4><ul class="tags"><li>TensorRT</li><li>GraphSurgeon</li><li>Polygraphy</li><li>Spark</li><li>Databricks</li><li>DeepSpeed</li><li>HPC clusters</li></ul></div>
+        <div class="tg"><h4>Tools and APIs</h4><ul class="tags"><li>AWS SageMaker</li><li>Postman</li><li>REST APIs</li><li>CometML</li><li>TensorBoard</li><li>MLflow</li></ul></div>
+        <div class="tg"><h4>Software</h4><ul class="tags"><li>Git</li><li>Streamlit</li><li>CI/CD (Bamboo, Bitbucket)</li><li>Confluence</li><li>JIRA</li><li>LaTeX</li></ul></div>
+        <div class="tg"><h4>Backend and data</h4><ul class="tags"><li>.NET Core</li><li>Flask</li><li>MSSQL</li><li>MongoDB</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="sec contact" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Get in touch.</h2>
+    <p class="lead">Email is the quickest way to reach me.</p>
+    <p class="email" id="email">gangulyraj3@gmail.com</p>
+    <div class="cta">
+      <button class="pill solid" id="copy" type="button"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.8"/><path d="M10.5 3.2v-.1a1.6 1.6 0 0 0-1.6-1.6H4.1a1.6 1.6 0 0 0-1.6 1.6v4.8a1.6 1.6 0 0 0 1.6 1.6h.1"/></svg><span>Copy address</span></button>
+      <a class="pill" href="mailto:gangulyraj3@gmail.com">Open in mail app</a>
+      <a class="pill" href="https://github.com/Rajjeshwar" target="_blank" rel="noopener">GitHub <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      <a class="pill" href="https://www.linkedin.com/in/rajjeshwar-g-94a2a2147/" target="_blank" rel="noopener">LinkedIn <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+    </div>
+    <p class="fine">The drawings on this page are illustrations made live in your browser, not experimental results. <button class="textbtn" id="motion" type="button" aria-pressed="true">Pause animations</button></p>
+  </div>
+</footer>
+
+<dialog class="cropper" id="cropper" aria-labelledby="crop-title">
+  <h3 id="crop-title">Portrait photo</h3>
+  <p class="note">Your photo is cropped and re-encoded right here in the browser, which removes location and every other piece of metadata. It is not uploaded anywhere, and it is remembered on this device only.</p>
+  <div class="crop-stage" id="crop-stage" tabindex="0" aria-label="Photo crop. Drag, or use the arrow keys, to reposition."><canvas id="crop-canvas" width="560" height="560"></canvas></div>
+  <div class="crop-row"><label for="crop-zoom">Zoom</label><input type="range" id="crop-zoom" min="1" max="5" step="0.01" value="2"></div>
+  <p class="crop-msg" id="crop-msg" role="status"></p>
+  <div class="crop-actions">
+    <button class="pill" id="crop-remove" type="button" hidden>Remove photo</button>
+    <button class="pill" id="crop-pick" type="button">Choose a file</button>
+    <button class="pill" id="crop-cancel" type="button">Close</button>
+    <button class="pill solid" id="crop-save" type="button" disabled>Use this photo</button>
+  </div>
+</dialog>
+<input type="file" id="photo-file" accept="image/*" hidden>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/photo-download.js" data-hosted-only></script>
+</body>
+</html>
