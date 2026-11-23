@@ -43,7 +43,8 @@ Every file in `js/figures/` exports one function. It receives a canvas and retur
 |---|---|---|
 | `attention.js` | Hero background | A patch grid that lights up where the pointer is |
 | `portrait.js` | Hero | `photo.jpg` breaking into patches, or a pixel stand-in |
-| `distillation.js` | About | A teacher grid distilling into a smaller student grid |
+| `career.js` | About | The short version as a route, from Mumbai to Toronto |
+| `distillation.js` | Vivid Machines | A teacher grid distilling into a smaller student grid |
 | `gp-calibration.js` | Vivid Machines | Gaussian Process calibration with an uncertainty band |
 | `ddim-inversion.js` | CRIM | An image stepped to noise and back, with the error map |
 | `ocr.js` | Wipro | A document scanned into structured fields |
@@ -69,6 +70,9 @@ results. Two do the real computation in the browser:
 
 Take colours from `core/palette.js` rather than hard-coding them, so the drawing follows
 the light and dark themes.
+
+A job card can hold more than one drawing: put each in its own `<figure>` inside the card's
+`.job-figs`, and they stack, as in the Vivid Machines card.
 
 ## The portrait
 
@@ -97,4 +101,7 @@ they are.
 python3 tools/bundle.py
 ```
 
-writes `dist/site.html`, the whole site in one file that opens without a server.
+writes `dist/site.html`, the whole site in one file that opens without a server, with the
+portrait and icon built in. Use it to preview changes before committing: `open dist/site.html`.
+It still loads the typeface from Google Fonts, so offline it falls back to a system font.
+`dist/` is ignored by git.

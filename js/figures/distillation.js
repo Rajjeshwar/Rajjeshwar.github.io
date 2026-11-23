@@ -1,13 +1,12 @@
 /*
- * About: teacher to student distillation.
+ * Vivid Machines: teacher to student distillation.
  */
-import { $, clamp, mix, smooth, hash, rng, setText } from '../core/util.js';
+import { clamp, mix, smooth, hash, rng } from '../core/util.js';
 import { ramp, ink, INK, SOFT, FAINT, ACC } from '../core/palette.js';
-import { label, rr, bez } from '../core/canvas.js';
+import { label, rr, bez, measure } from '../core/canvas.js';
 
 export default function distillation(fig) {
   const ctx = fig.ctx, GT = 14, GS = 7, C = 9;
-  const out = { ct: $('#f1-ct'), cs: $('#f1-cs') };
   const scenes = new Map();
   function scene(k) {
     if (scenes.has(k)) return scenes.get(k);
@@ -27,7 +26,7 @@ export default function distillation(fig) {
       const a = 2 * i * GT + 2 * j;
       S[i * GS + j] = (T[a] + T[a + 1] + T[a + GT] + T[a + GT + 1]) / 4;
     }
-    const sc = { n: blobs.length, T, S, tok: [0, 1, 2, 3, 4].map(() => .25 + r() * .6) };
+    const sc = { T, S, tok: [0, 1, 2, 3, 4].map(() => .25 + r() * .6) };
     scenes.set(k, sc);
     if (scenes.size > 6) scenes.delete(scenes.keys().next().value);
     return sc;
@@ -95,11 +94,13 @@ export default function distillation(fig) {
     ctx.globalAlpha = 1;
 
     label(ctx, 'Teacher  ·  ViT-S', xT, tokT - 9, fs, INK, 'left', 600);
-    label(ctx, 'Student  ·  Efficient-ViT', w - pad, tokS - 9, fs, INK, 'right', 600);
-
-    const tc = x < .5 ? A.n : B.n;
-    setText(out.ct, String(tc));
-    setText(out.cs, String(Math.max(0, Math.round(mix(tc, A.n + (hash(tick >> 1, k, 5) - .5) * 5, unsettled)))));
+    // In a short, wide frame the student's name would run into the CLS label; stack it instead.
+    const sName = 'Student  ·  Efficient-ViT', cEnd = xT + 5 * cT + 13 + lw;
+    if (w - pad - measure(ctx, sName, fs, 600) > cEnd) label(ctx, sName, w - pad, tokS - 9, fs, INK, 'right', 600);
+    else {
+      label(ctx, 'Student', w - pad, tokS - 9 - fs * 1.15, fs, INK, 'right', 600);
+      label(ctx, 'Efficient-ViT', w - pad, tokS - 9, fs, INK, 'right', 600);
+    }
   }
   return { draw, stillAt: 6.5 };
 }

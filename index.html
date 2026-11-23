@@ -42,7 +42,7 @@
     <div class="hero-in">
       <div class="me-wrap">
         <div class="me" id="me">
-          <img id="photo" alt="Portrait of Rajjeshwar Ganguly" hidden>
+          <img id="photo" data-src="photo.jpg" alt="Portrait of Rajjeshwar Ganguly" hidden>
           <canvas id="fig-me" aria-hidden="true"></canvas>
         </div>
       </div>
@@ -73,18 +73,12 @@
           <p>I'm a research engineer working on computer vision and MLOps. At Vivid Machines in Toronto, most of my work is getting large vision models to run well on small hardware. I distill them, calibrate their predictions, and ship them as optimized TensorRT graphs that run on camera.</p>
           <p>Before that I did my M.Sc. at Mila, Universit&eacute; de Montr&eacute;al, in the program supervised by Prof. Yoshua Bengio, and worked at CRIM on diffusion models for deepfake detection. I have co-authored three peer-reviewed papers on vision transformers and diffusion models.</p>
           <p>I started out as a software engineer in India, building ML and .NET systems at L&amp;T Infotech and Wipro.</p>
-          <div class="facts">
-            <div><b>2&times;</b><span>faster on camera</span></div>
-            <div><b>30%</b><span>MAPE reduction on low counts</span></div>
-            <div><b>3</b><span>peer-reviewed papers</span></div>
-          </div>
         </div>
       </div>
       <figure class="rv" style="--d:.12s">
         <div class="well"><div class="stage">
-          <canvas id="fig-distill" role="img" aria-label="Animation: a 14 by 14 grid of teacher patch features on the left and a smaller 7 by 7 student grid on the right. Signals flow from teacher to student, and the student's noisy grid settles into a coarse copy of the teacher's."></canvas>
+          <canvas id="fig-career" role="img" aria-label="Animation: a route through five stops, grouped by country. In India: L&amp;T Infotech in Mumbai from 2018, then Wipro in Pune from 2021. In Canada: an M.Sc. at Mila, Universit&eacute; de Montr&eacute;al, from 2022, CRIM in Montr&eacute;al from 2023, and Vivid Machines in Toronto from 2024, marked as now. A pulse runs down the route and each stop lights up as it arrives."></canvas>
         </div></div>
-        <p class="cap">Distillation, drawn live. A ViT-S teacher on the left, and a smaller Efficient-ViT student on the right learning to see the same thing. Teacher counts <b id="f1-ct">7</b>, student counts <b id="f1-cs">7</b>.</p>
       </figure>
     </div>
   </div>
@@ -103,18 +97,29 @@
 
   <div class="reel rv" id="reel" tabindex="0" role="group" aria-label="Work experience. Scroll sideways or use the arrow keys.">
     <article class="job">
-      <figure>
-        <div class="well"><div class="stage wide">
-          <canvas id="fig-gp" role="img" aria-label="Animation: a dashed raw model curve, data points arriving one at a time, and a calibrated curve with an uncertainty band that narrows around each new point."></canvas>
-        </div></div>
-        <p class="legend"><span><i class="dash"></i>Raw model</span><span><i></i>Calibrated</span><span><i class="band"></i>Uncertainty</span><span><i class="dot"></i>Historical data</span></p>
-        <figcaption class="cap">A real Gaussian Process, fit in your browser. <b id="f2-n">0</b> of 9 points in, average uncertainty <b id="f2-sd">0.170</b>.</figcaption>
-      </figure>
+      <div class="job-figs">
+        <figure>
+          <div class="well"><div class="stage wide">
+            <canvas id="fig-distill" role="img" aria-label="Animation: a 14 by 14 grid of teacher patch features on the left and a smaller 7 by 7 student grid on the right. Signals flow from teacher to student, and the student's noisy grid settles into a coarse copy of the teacher's."></canvas>
+          </div></div>
+        </figure>
+        <figure>
+          <div class="well"><div class="stage wide">
+            <canvas id="fig-gp" role="img" aria-label="Animation: a dashed raw model curve, data points arriving one at a time, and a calibrated curve with an uncertainty band that narrows around each new point."></canvas>
+          </div></div>
+          <p class="legend"><span><i class="dash"></i>Raw model</span><span><i></i>Calibrated</span><span><i class="band"></i>Uncertainty</span><span><i class="dot"></i>Historical data</span></p>
+          <figcaption class="cap">A real Gaussian Process, fit in your browser. <b id="f2-n">0</b> of 9 points in, average uncertainty <b id="f2-sd">0.170</b>.</figcaption>
+        </figure>
+      </div>
       <div class="job-body">
         <p class="when">May 2024 &ndash; Present<i></i>Toronto, Canada</p>
         <h3>Senior Machine Learning Research Engineer</h3>
         <p class="org">Vivid Machines</p>
         <ul class="tags"><li>PyTorch</li><li>TensorRT</li><li>Spark</li><li>Databricks</li><li>DeepSpeed</li><li>LoRA</li></ul>
+        <div class="facts">
+          <div><b>2&times;</b><span>faster on camera</span></div>
+          <div><b>30%</b><span>MAPE reduction on low counts</span></div>
+        </div>
         <ul class="pts">
           <li>Built a multi-stage distillation pipeline that compresses ViT-S into Efficient-ViT, aligning CLS and register tokens and dense patch features with a Gram loss and log-transformed logit alignment, then refined the production graphs with TensorRT GraphSurgeon and Polygraphy. <strong>5% MAPE reduction overall, 30% on low counts, and a 2&times; speed-up on camera.</strong></li>
           <li>Designed a Bayesian MAP calibration system that uses Gaussian Processes to correct model predictions from historical data. It runs on Spark over millions of records a day and updates its priors as new data arrives.</li>
@@ -129,7 +134,6 @@
         <div class="well"><div class="stage wide">
           <canvas id="fig-ddim" role="img" aria-label="Animation: a small portrait image is stepped into noise, then stepped back into a reconstruction, and the difference between the two is shown as an error map."></canvas>
         </div></div>
-        <figcaption class="cap">An image stepped to its latent noise and back. <b id="f3-phase">Input</b>, t = <b id="f3-t">000</b>.</figcaption>
       </figure>
       <div class="job-body">
         <p class="when">May 2023 &ndash; Mar 2024<i></i>Montr&eacute;al, Canada</p>
@@ -149,7 +153,6 @@
         <div class="well"><div class="stage wide">
           <canvas id="fig-ocr" role="img" aria-label="Animation: a scan line moves down a document and the fields it finds appear as a list beside it."></canvas>
         </div></div>
-        <figcaption class="cap">Documents in, structured fields out.</figcaption>
       </figure>
       <div class="job-body">
         <p class="when">Oct 2021 &ndash; Aug 2022<i></i>Pune, India</p>
@@ -167,7 +170,6 @@
         <div class="well"><div class="stage wide">
           <canvas id="fig-line" role="img" aria-label="Animation: bottles move along a line past a camera. Each one is outlined as it passes, and a bottle with a defect is flagged as an anomaly."></canvas>
         </div></div>
-        <figcaption class="cap">Each bottle is segmented as it crosses the line camera.</figcaption>
       </figure>
       <div class="job-body">
         <p class="when">Jul 2018 &ndash; Apr 2021<i></i>Mumbai, India</p>
@@ -188,7 +190,10 @@
 
 <section class="sec" id="research">
   <div class="wrap">
-    <h2 class="rv">What I've published.</h2>
+    <div class="sec-head pub-head rv">
+      <h2>What I've published.</h2>
+      <p class="stat"><b>3</b><span>peer-reviewed papers</span></p>
+    </div>
     <ol class="papers rv" style="--d:.08s">
       <li class="paper">
         <div>
@@ -212,6 +217,7 @@
           <p class="by">M. Bah, <b>R. Ganguly</b>, M. Dahmane</p>
           <p class="at">VISAPP 2024<i></i>Proceedings of the 19th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications, vol. 4, pp. 532&ndash;538</p>
         </div>
+        <a class="pill" href="https://www.scitepress.org/publishedPapers/2024/123913/pdf/index.html" target="_blank" rel="noopener">Read paper <svg class="i go" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
       </li>
     </ol>
   </div>

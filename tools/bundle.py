@@ -10,11 +10,13 @@ page without a local server or to send it to someone.
                                             # <html>/<head>/<body>, for pasting into a host
                                             # page
 
-It inlines the stylesheet and flattens the JavaScript modules into one script, in dependency
-order. That flattening is deliberately simple: it relies on every module using one-line
+It inlines the stylesheet, the portrait and the icon, and flattens the JavaScript modules into
+one script, in dependency order. That flattening is deliberately simple: it relies on every
+module using one-line
 `import ... from '...';` statements and on top-level names being unique across modules.
 """
 import argparse
+import base64
 import os
 import re
 
@@ -27,6 +29,11 @@ TOP_LEVEL = re.compile(r"^(?:export\s+(?:default\s+)?)?(?:const|let|function|cla
 def read(rel):
     with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
         return fh.read()
+
+
+def data_url(rel, mime):
+    with open(os.path.join(ROOT, rel), "rb") as fh:
+        return "data:%s;base64,%s" % (mime, base64.b64encode(fh.read()).decode("ascii"))
 
 
 def load_order(entry, seen, order):
@@ -61,6 +68,10 @@ def main():
     args = ap.parse_args()
 
     html = read("index.html")
+    # The portrait and icon go in as data URLs, so the file shows them wherever it is opened.
+    for attr, rel, mime in (("data-src", "photo.jpg", "image/jpeg"), ("href", "favicon.svg", "image/svg+xml")):
+        if os.path.exists(os.path.join(ROOT, rel)):
+            html = html.replace('%s="%s"' % (attr, rel), '%s="%s"' % (attr, data_url(rel, mime)))
     html = html.replace('<link rel="stylesheet" href="css/styles.css">', "<style>\n" + read("css/styles.css") + "</style>")
     html = re.sub(r'<script src="([^"]+)"></script>', lambda m: "<script>\n" + read(m.group(1)) + "</script>", html)
 

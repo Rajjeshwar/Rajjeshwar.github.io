@@ -18,3 +18,9 @@ export function bez(x0, y0, x1, y1, x2, y2, x3, y3, u) {
   const v = 1 - u, a = v * v * v, b = 3 * v * v * u, c = 3 * v * u * u, d = u * u * u;
   return [a * x0 + b * x1 + c * x2 + d * x3, a * y0 + b * y1 + c * y2 + d * y3];
 }
+
+// Width of a label drawn at this size and weight.
+export function measure(ctx, s, size, weight) {
+  ctx.font = (weight || 500) + ' ' + size + 'px ' + SANS;
+  return ctx.measureText(s).width;
+}

@@ -1,13 +1,12 @@
 /*
  * CRIM: DDIM inversion and reconstruction.
  */
-import { $, clamp, mix, smooth, hash, setText } from '../core/util.js';
+import { clamp, mix, smooth, hash } from '../core/util.js';
 import { ramp, ink, SOFT, FAINT, EMPTY, ACC } from '../core/palette.js';
 import { label } from '../core/canvas.js';
 
 export default function ddimInversion(fig) {
   const ctx = fig.ctx, N = 12, C = 10, STEPS = 20;
-  const out = { phase: $('#f3-phase'), t: $('#f3-t') };
   const x0 = new Float32Array(N * N), eps = new Float32Array(N * N), xh = new Float32Array(N * N), err = new Float32Array(N * N);
   for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
     const u = (j + .5) / N, v = (i + .5) / N;
@@ -75,9 +74,6 @@ export default function ddimInversion(fig) {
     ctx.stroke();
     const tn = tau < 4.2 ? sI : 1 - sR;
     ctx.fillStyle = ACC; ctx.beginPath(); ctx.arc(x0t + (x1t - x0t) * tn, yT + .5, 4.5, 0, 6.2832); ctx.fill();
-
-    setText(out.phase, tau < .6 ? 'Input' : tau < 3.6 ? 'Inverting' : tau < 4.2 ? 'Latent reached' : tau < 7.2 ? 'Reconstructing' : 'Reconstruction error');
-    setText(out.t, String(Math.round(tn * 999)).padStart(3, '0'));
   }
   return { draw, stillAt: 8.6 };
 }
